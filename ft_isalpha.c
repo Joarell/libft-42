@@ -6,11 +6,12 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 20:23:30 by Jev               #+#    #+#             */
-/*   Updated: 2021/08/23 22:32:35 by Jev              ###   ########.fr       */
+/*   Updated: 2021/08/23 23:47:49 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 
-int	ft_isalpha(unsigned int c)
+int	ft_isalpha(int c)
 {
 	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
 }
