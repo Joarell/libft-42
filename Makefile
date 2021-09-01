@@ -1,7 +1,8 @@
+.PHONY:  all clean fclean re
 
 NAME = libft.a
 
-SRCS = ft_isalpha.c ft_isdigit.c 
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -15,10 +16,10 @@ FLAGS = -Wall -Wextra -Werror
 all:	${NAME}
 
 ${NAME}: ${OBJS}
-		 ar rcs ${NAME} ${OBJS} 
-${OBJS}: ${SRCS}
-		${CC} ${FLAGS} ${SRCS} -c
+		ar -crs ${NAME} ${OBJS} 
 
+${OBJS}: ${SRCS}
+		 ${CC} ${FLAGS} -c ${SRCS} 
 clean:
 		${RM} ${OBJS}
 
@@ -26,5 +27,3 @@ fclean:	clean
 		${RM} ${NAME}
 
 re:		fclean all
-
-.PHONY:  all clean fclean re
