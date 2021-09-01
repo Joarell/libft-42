@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
+/*   By: jsouza-c <jsouza-c@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/30 20:07:17 by Jev               #+#    #+#             */
-/*   Updated: 2021/08/30 20:09:46 by Jev              ###   ########.fr       */
+/*   Created: 2021/08/31 23:16:52 by jsouza-c          #+#    #+#             */
+/*   Updated: 2021/08/31 23:23:51 by jsouza-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalph(int c)
+int	ft_isalpha(int c)
 {
-	return((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
