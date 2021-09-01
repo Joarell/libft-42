@@ -6,11 +6,11 @@
 /*   By: jsouza-c <jsouza-c@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 23:38:36 by jsouza-c          #+#    #+#             */
-/*   Updated: 2021/08/31 23:41:21 by jsouza-c         ###   ########.fr       */
+/*   Updated: 2021/09/01 00:06:44 by jsouza-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }
