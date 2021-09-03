@@ -6,18 +6,18 @@
 /*   By: jsouza-c <jsouza-c@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 20:03:49 by jsouza-c          #+#    #+#             */
-/*   Updated: 2021/09/03 20:12:25 by jsouza-c         ###   ########.fr       */
+/*   Updated: 2021/09/03 20:43:28 by jsouza-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(const char *s)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (s[count] != '\0')
 	{
 		count++;
 	}
-	return(count);
+	return (count);
 }
