@@ -6,11 +6,13 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 01:07:10 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/06 15:54:25 by Jev              ###   ########.fr       */
+/*   Updated: 2021/09/11 14:31:04 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, int n)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
 	while (n > 0)
 	{
