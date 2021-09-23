@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 23:07:10 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/21 22:18:09 by Jev              ###   ########.fr       */
+/*   Updated: 2021/09/23 01:00:18 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strdup(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
