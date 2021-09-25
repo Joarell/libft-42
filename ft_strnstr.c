@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 00:12:54 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/18 19:03:37 by Jev              ###   ########.fr       */
+/*   Updated: 2021/09/25 19:18:07 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,23 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	const char	*aux;
+	char	*aux;
 
-	if (*(char *) little == '\0')
-		return ((char *) big);
 	while (*big != *little)
 	{
-		if (len == 0)
-			break ;
+		if (len <= 0)
+			return (NULL);
 		big++;
 		len--;
 	}
-	aux = big;
+	aux = (char *) big;
 	while (*little != '\0')
 	{
-		if ((len == 0) || (*big != *little))
-			break ;
-		len--;
+		if (len <= 0)
+			return (NULL);
 		big++;
 		little++;
+		len--;
 	}
-	if ((*little != '\0') || (ft_isalpha(*big) == 1))
-		return (NULL);
-	return ((char *) aux);
+	return (aux);
 }
