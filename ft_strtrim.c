@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 23:15:50 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/25 16:56:27 by Jev              ###   ########.fr       */
+/*   Updated: 2021/09/26 20:44:52 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (*s1 == *set)
 	{
 		s1++;
-		set++;
 	}
 	len1 = ft_strlen(s1);
 	while (s1[len1] == set2[len2])
 	{
-		if (len2 == 0)
+		if ((len2 == 0) || (s1[len1 - 1] != set2[len2]))
 			break ;
 		len1--;
 		len2--;
