@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 21:47:34 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/29 03:20:43 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/02 23:55:07 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ static int	array_size(int num)
 
 	size = 0;
 	i = 0;
-	if (num < 0)
+	if (num == 0)
 	{
 		size++;
-		i++;
-	}	
-	while (num != 0)
+	}
+	while (num != 0 || ft_isalpha(num) == 1)
 	{
 		size++;
 		num = num / 10;
@@ -42,7 +41,7 @@ static	char	*module(int num, int signal)
 	{
 		return (NULL);
 	}
-	*aux = (num % 10) * signal + '0';
+	*aux = ((num % 10) * signal) + '0';
 	return (aux);
 }
 
@@ -51,26 +50,25 @@ char	*ft_itoa(int n)
 	char	*string;
 	int		signal;
 	int		len;
-	char	*aux;
 
-	aux = NULL;
 	signal = 1;
 	len = array_size(n);
-	string = malloc (len * sizeof(char));
+	string = malloc (len * sizeof(char *));
 	if (string == NULL)
 		return (NULL);
-	if (n < 1)
+	if (n == 0)
+		*string = '0';
+	if (n < 0)
 	{
 		signal = -1;
 		string[0] = '-';
+		len++;
 	}
-	len--;
 	while (n != 0)
 	{
-		aux = module(n, signal);
-		string[len] = *(char *) aux;
-		n = n / 10;
 		len--;
+		string[len] = *(char *) module(n, signal);
+		n = n / 10;
 	}
 	return (string);
 }
