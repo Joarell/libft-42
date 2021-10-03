@@ -6,12 +6,11 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 01:09:31 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/23 23:05:13 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/02 21:54:54 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
