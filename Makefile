@@ -8,7 +8,7 @@ ft_strncmp.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_subst
 ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 ft_putendl_fd.c ft_putnbr_fd.c
 
-OBJS = ${SRCS:.c=.o}
+OBJS = $(SRCS:.c=.o)
 
 CC = clang 
 
@@ -17,17 +17,17 @@ RM = rm -f
 FLAGS = -Wall -Wextra -Werror 
 
 
-all:	${NAME}
+all:	$(NAME)
 
-${NAME}: ${OBJS}
-		ar -crs ${NAME} ${OBJS} 
+$(NAME): $(OBJS)
+		ar -crs $(NAME) $(OBJS) 
 
-${OBJS}: ${SRCS}
-		 ${CC} ${FLAGS} -c ${SRCS} 
+$(OBJS): $(SRCS)
+		 $(CC) $(FLAGS) -c $(SRCS) 
 clean:
-		${RM} ${OBJS}
+		$(RM) $(OBJS)
 
 fclean:	clean
-		${RM} ${NAME}
+		$(RM) $(NAME)
 
 re:		fclean all
