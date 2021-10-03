@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 22:50:28 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/23 01:11:49 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/03 00:35:18 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		return (NULL);
 	}
-	ft_memmove(copy, s + start, len * sizeof(char));
+	ft_memcpy(copy, s + start, len * sizeof(char));
 	return (copy);
 }
