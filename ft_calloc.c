@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 17:11:31 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/23 00:04:15 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/03 21:46:42 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t num, size_t size)
 {
 	void	*loc;
 
-	loc = malloc (num * size);
+	loc = (void *) malloc (num * size);
 	if (loc == NULL)
 	{
 		return (NULL);
