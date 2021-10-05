@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 19:39:23 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/13 23:56:52 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/04 22:11:22 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ int	ft_memcmp(const void *b1, const void *b2, size_t len)
 	{
 		return (0);
 	}
-	else if ((char) len < 0)
+	else if ((int) len < 0)
 	{
 		return (ft_strncmp(b1, b2, len));
 	}
-	while (*(char *) b1 == *(char *) b2 && len > 1)
+	while (*(unsigned char *) b1 == *(unsigned char *) b2 && len > 1)
 	{
 		b1++;
 		b2++;
 		len--;
 	}
-	if (*(char *) b1 > *(char *) b2)
+	if (*(unsigned char *) b1 > *(unsigned char *) b2)
 	{
 		return (1);
 	}
-	else if (*(char *) b1 < *(char *) b2)
+	else if (*(unsigned char *) b1 < *(unsigned char *) b2)
 	{
 		return (-1);
 	}
