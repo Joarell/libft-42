@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 15:53:06 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/09 13:21:25 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/09 14:53:24 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	{
 		dst++;
 	}
-	ft_memcpy(dst, src, size - 1);
+	ft_memcpy(dst, src, size);
+	size = ft_strlen(dst);
+	dst[size - 1] = '\0';
 	return (*dst);
 }
