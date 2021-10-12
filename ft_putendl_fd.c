@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 01:15:10 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/02 18:48:40 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/09 21:17:14 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	while (*s != '\0')
-	{
-		if (*s == fd)
-		{
-			write(1, &*s, 1);
-			write(1, "\n", 1);
-		}
-		s++;
-	}
+	ft_putstr_fd(s, fd);
+	ft_putstr_fd("\n", fd);
 }
