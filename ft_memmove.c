@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:53:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/13 13:54:57 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/13 14:11:34 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	{
 		return (ft_memcpy(dst, src, len));
 	}
-	dst = (unsigned char *)dst + len - 1;
-	src = (unsigned char *)dst + len - 1;
 	while (len > 0)
 	{
 		*(unsigned char *) dst = *(unsigned char *) src;
-		dst--;
-		src--;
+		dst++;
+		src++;
 		len--;
 	}
+	dst -= zero;
 	return (dst);
 }
