@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 17:11:07 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/05 20:37:10 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/13 12:21:10 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	size_t	zero;
 
 	zero = n;
+	if ((!dst && !src) || !n)
+	{
+		return (dst);
+	}
 	while (n > 0)
 	{
 		*(char *) dst = *(char *) src;
