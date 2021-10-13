@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 17:11:31 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/03 21:46:42 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/13 16:13:16 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_calloc(size_t num, size_t size)
 	{
 		return (NULL);
 	}
-	ft_memset(loc, 0, size);
+	ft_memset(loc, 0, size * num);
 	return (loc);
 }
