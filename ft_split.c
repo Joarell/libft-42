@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/26 21:20:47 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/13 02:57:57 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	array_size(char const *str, char c)
 
 	number = 0;
 	repeat = 0;
-	ft_strtrim(str, &c);
 	while (*str != '\0')
 	{
 		if (ft_isalpha(*str) == 1)
