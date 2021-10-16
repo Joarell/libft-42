@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 22:48:50 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/13 23:18:01 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/16 18:51:08 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static size_t	range(const char *str, size_t l)
 	}
 	return (i);
 }
+
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	dstlen;
