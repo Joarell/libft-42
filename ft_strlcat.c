@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 15:53:06 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/16 18:04:08 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/16 18:49:46 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t	cat_len(const char *str, size_t num)
 	size_t	i;
 
 	i = 0;
-	while (str[i] && i < num)
+	while (str[i] != '\0' && i < num)
 	{
 		i++;
 	}
