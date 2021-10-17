@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 00:39:24 by Jev               #+#    #+#             */
-/*   Updated: 2021/09/12 11:04:52 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/16 19:34:40 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (*(char *) s == '\0' + 1)
+	if (*s == '\0' && c != '\0')
 	{
 		return (NULL);
 	}
-	else if (*(char *) s != c)
+	if (*s != c)
 	{
 		s++;
 		return (ft_strchr(s, c));
