@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 23:07:10 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/02 21:00:51 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/17 17:01:42 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t len);
+void	*ft_memchr(const void *b, int c, size_t len);
 int		ft_memcmp(const void *b1, const void *b2, size_t len);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *str);
