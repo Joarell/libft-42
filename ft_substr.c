@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 22:50:28 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/03 00:35:18 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/17 21:34:56 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,24 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*copy;
+	size_t	range;
 
-	copy = malloc (len);
-	if (copy == NULL)
+	range = ft_strlen(s);
+	if (range < start)
+		return (ft_strdup(""));
+	s += start;
+	range = ft_strlen(s);
+	if (range <= len)
 	{
-		return (NULL);
+		copy = (char *) malloc (len * sizeof(char));
+		if (copy == NULL)
+			return (NULL);
+		ft_strlcpy(copy, s, len + 1);
+		return (copy);
 	}
-	ft_memcpy(copy, s + start, len * sizeof(char));
+	copy = (char *) malloc (range * sizeof(char));
+	if (copy == NULL)
+		return (NULL);
+	ft_strlcpy(copy, s, len + 1);
 	return (copy);
 }
