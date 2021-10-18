@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 21:47:34 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/18 08:06:53 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/18 20:37:09 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,11 @@ static int	array_size(int num)
 	return (size);
 }
 
-static	char	*module(int num, int signal)
+static	char	module(int num, int signal)
 {
-	char	*aux;
+	char	aux;
 
-	aux = malloc (sizeof(char));
-	if (aux == NULL)
-	{
-		return (NULL);
-	}
-	*aux = ((num % 10) * signal) + '0';
+	aux = ((num % 10) * signal) + '0';
 	return (aux);
 }
 
@@ -64,22 +59,21 @@ char	*ft_itoa(int n)
 	int		len;
 
 	len = array_size(n);
+	if (n < 0)
+		len++;
 	signal = signal_check(n);
-	string = malloc (len * sizeof(char *));
+	string = (char *) malloc (len * sizeof(char *) + 1);
+	if (n < 0)
+		string[0] = '-';
 	if (string == NULL)
 		return (NULL);
 	if (n == 0)
 		*string = '0';
-	if (n < 0)
-	{
-		len++;
-		string[0] = '-';
-	}
 	string[len] = '\0';
 	while (n != 0)
 	{
 		len--;
-		string[len] = *(char *) module(n, signal);
+		string[len] = module(n, signal);
 		n = n / 10;
 	}
 	return (string);
