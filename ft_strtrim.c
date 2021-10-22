@@ -6,75 +6,78 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 23:15:50 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/13 02:55:32 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/21 22:20:20 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void	*end_trim(const char *str, const char *cut)
+static	char	*finished(const char *w, size_t range)
 {
-	char	*aux2;
-	int		len;
+	char	*str_comp;
 
-	len = ft_strlen(str) - ft_strlen(cut);
-	aux2 = malloc(len * sizeof(char));
-	if (aux2 == NULL)
-		return (NULL);
-	str += ft_strlen(str);
-	cut += ft_strlen(cut);
-	while (len > 0)
+	str_comp = malloc (range * sizeof(char) + 1);
+	if (str_comp == NULL)
 	{
-		if (*str == *cut && ft_isalpha(str[len - 1]) == 0)
-		{
-			str--;
-			cut--;
-		}
-		if (*str != *cut)
-		{
-			aux2[len - 1] = *str;
-			str--;
-			len--;
-		}
+		return (NULL);
 	}
-	return (aux2);
+	ft_strlcpy(str_comp, w, range + 1);
+	return (str_comp);
 }
 
-static	char	*middle_trim(const char *str, char *cut)
+static	char	*end_trim(const char *str, const char *cut)
 {
-	int		len1;
-	int		len2;
+	size_t	len_str;
+	size_t	trim_end;
+	int		len_cut;
 
-	len1 = ft_strlen(str);
-	str += len1 - 1;
-	len2 = ft_strlen(cut);
-	cut += len2 - 1;
-	if (*str == *cut)
+	len_str = ft_strlen(str) - 1;
+	len_cut = ft_strlen(cut) - 1;
+	trim_end = 0;
+	while (str[len_str] == cut[len_cut] || cut[len_cut] != '\0')
 	{
-		str -= len1 - 1;
-		cut -= len2 - 1;
-		str = end_trim(str, cut);
-		return ((char *) str);
+		if (str[len_str] == cut[len_cut])
+		{
+			trim_end++;
+			len_cut = ft_strlen(cut) - 1;
+			len_str--;
+		}
+		if (str[len_str] == cut[len_cut])
+		{
+			trim_end++;
+		}
+		len_cut--;
 	}
-	str -= len1 - 1;
-	return ((char *) str);
+	if (trim_end == 0)
+		len_str++;
+	return (finished(str, len_str));
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		len1;
-	char	*tmp;
+	int		len_s1;
+	int		trim;
+	int		len_set;
+	char	*trimed;
 
-	len1 = ft_strlen(s1);
-	tmp = (char *) set;
-	while (ft_isalpha(*s1) == 0 && *set != '\0')
+	len_s1 = 0;
+	trim = 0;
+	len_set = 0;
+	while (s1[len_s1] == set[len_set] || set[len_set] != '\0')
 	{
-		if (*s1 == *set)
+		if (s1[len_s1] == set[len_set])
 		{
-			set++;
-			s1++;
+			trim++;
+			len_set = 0;
+			len_s1++;
 		}
+		if (s1[len_s1] == set[len_set])
+		{
+			trim++;
+		}
+		len_set++;
 	}
-	s1 = middle_trim(s1, tmp);
-	return ((char *) s1);
+	s1 += trim;
+	trimed = end_trim(s1, set);
+	return (trimed);
 }
