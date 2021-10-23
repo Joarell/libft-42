@@ -6,84 +6,87 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/13 02:57:57 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/23 19:45:44 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	array_size(char const *str, char c)
+static size_t	array_size(char const *str, char c)
 {
-	int		number;
-	int		repeat;
+	size_t	number;
+	size_t	repeat;
 
-	number = 0;
 	repeat = 0;
+	number = ft_strlen(str);
 	while (*str != '\0')
 	{
-		if (ft_isalpha(*str) == 1)
-			repeat = 0;
-		if ((ft_isalpha(*str) == 1) || (repeat > 0))
+		if (*str == c)
 		{
-			str++;
-		}
-		else if (*str == c)
-		{
-			number++;
 			repeat++;
-			str++;
 		}
-	}
-	if (c == '\0')
-		return (1);
-	return (number + 1);
-}
-
-static char	*buffer_make(char const *str, char c, char const *b)
-{
-	int			size;
-	char const	*aux;
-
-	size = 0;
-	aux = str;
-	while (*str != c && *str != '\0')
-	{
-		size++;
+		number++;
 		str++;
 	}
-	b = malloc (size * sizeof(char));
-	if (b == NULL)
+	number -= repeat;
+	return (number);
+}
+
+static char *next(char const *s, char c)
+{
+	int		range;
+	char	*next;
+
+	range = 0;
+	while (s[range] != c && s[range] != '\0')
 	{
-		return (NULL);
+		range++;	
 	}
-	ft_memcpy((void *) b, aux, size);
-	return ((char *) b);
+	next = ft_substr(s, 0, range);
+	return (next);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**storage;
 	char	*buffer;
-	int		len;
 	int		i;
 
 	i = 0;
 	buffer = NULL;
 	storage = malloc (array_size(s, c) * sizeof(char *) + 1);
-	len = ft_strlen(s);
 	if (storage == NULL)
 	{
 		return (NULL);
 	}
-	while (len >= 0)
+	while (!(ft_strlen(s) == 0))
 	{
 		s = ft_strtrim(s, &c);
-		buffer = (char *) buffer_make(s, c, buffer);
+		buffer = (char *) s;
+		buffer = next(buffer, c);
 		storage[i] = buffer;
 		s += ft_strlen(buffer);
-		len = ft_strlen(s) - ft_strlen(buffer);
 		i++;
 	}
 	storage[i] = NULL;
 	return (storage);
+}
+
+#include<stdio.h>
+
+int main (void)
+{
+	char	**result;
+	int		i;
+
+	result = ft_split("  lorem  ipsum  dolor  sit  amet,  consectetur  adipiscing  elit.  Sed  non  risus.  Suspendisse  ", ' ');
+	i = 0;
+	while (*result[i] != '\0')
+	{
+		printf("|%s|\n", result[i]);
+
+		i++;
+	}
+	free(result);
+	return (0);
 }
