@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 23:15:50 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/21 22:20:20 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/23 11:53:32 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,21 @@ static	char	*finished(const char *w, size_t range)
 static	char	*end_trim(const char *str, const char *cut)
 {
 	size_t	len_str;
-	size_t	trim_end;
-	int		len_cut;
+	size_t	len_cut;
 
 	len_str = ft_strlen(str) - 1;
-	len_cut = ft_strlen(cut) - 1;
-	trim_end = 0;
-	while (str[len_str] == cut[len_cut] || cut[len_cut] != '\0')
+	len_cut = 0;
+	while (cut[len_cut] != '\0')
 	{
 		if (str[len_str] == cut[len_cut])
 		{
-			trim_end++;
-			len_cut = ft_strlen(cut) - 1;
+			len_cut = 0;
 			len_str--;
 		}
-		if (str[len_str] == cut[len_cut])
-		{
-			trim_end++;
-		}
-		len_cut--;
+		else
+			len_cut++;
 	}
-	if (trim_end == 0)
-		len_str++;
+	len_str++;
 	return (finished(str, len_str));
 }
 
@@ -58,12 +51,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		len_s1;
 	int		trim;
 	int		len_set;
-	char	*trimed;
 
 	len_s1 = 0;
 	trim = 0;
 	len_set = 0;
-	while (s1[len_s1] == set[len_set] || set[len_set] != '\0')
+	while (s1[len_s1] != '\0' && set[len_set] != '\0')
 	{
 		if (s1[len_s1] == set[len_set])
 		{
@@ -71,13 +63,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 			len_set = 0;
 			len_s1++;
 		}
-		if (s1[len_s1] == set[len_set])
-		{
-			trim++;
-		}
-		len_set++;
+		else
+			len_set++;
 	}
 	s1 += trim;
-	trimed = end_trim(s1, set);
-	return (trimed);
+	return (end_trim(s1, set));
 }
