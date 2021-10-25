@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 21:45:31 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/01 00:48:36 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/25 00:10:39 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	len;
-	int	i;
+	size_t	len;
+	int		i;
 
 	len = ft_strlen(s);
 	i = 0;
-	while (i <= len)
+	while (len--)
 	{
 		(f)(i, s);
 		i++;
