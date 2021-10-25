@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 00:39:24 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/16 19:34:40 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/24 20:01:14 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (*s == '\0' && c != '\0')
+	char	*str;
+
+	str = (char *) s;
+	if (*str == '\0' && (char) c != '\0')
 	{
 		return (NULL);
 	}
-	if (*s != c)
+	if (*str != (char) c)
 	{
-		s++;
-		return (ft_strchr(s, c));
+		str++;
+		return (ft_strchr(str, (char) c));
 	}
-	return ((char *) s);
+	return (str);
 }
