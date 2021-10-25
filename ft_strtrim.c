@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 23:15:50 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/23 11:53:32 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/24 22:41:05 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ static	char	*finished(const char *w, size_t range)
 {
 	char	*str_comp;
 
-	str_comp = malloc (range * sizeof(char) + 1);
+	if (!*w)
+	{
+		return (ft_strdup(""));
+	}
+	str_comp = (char *) malloc (range * sizeof(char) + 1);
 	if (str_comp == NULL)
 	{
 		return (NULL);
