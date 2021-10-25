@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 01:19:41 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/18 20:15:11 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/25 07:48:05 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,28 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*num;
+	char	num;
 
-	num = NULL;
+	num = 0;
+	if (n == 0)
+	{
+		return ;
+	}
+	if (n == '-')
+	{
+		num = '-';
+	}
 	if (n >= INT_MIN && n <= INT_MAX)
 	{
-		num = ft_itoa(n);
+		num = n % 10 + '0';
+		n /= 10;
+		ft_putchar_fd(num, fd);
+		return (ft_putnbr_fd(n, fd));
 	}
-	while (*num != '\0')
-	{
-		ft_putchar_fd(*num, fd);
-		num++;
-	}
+}
+
+int main(void)
+{
+	ft_putnbr_fd(1234, 1);
+	return(0);
 }
