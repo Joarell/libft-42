@@ -6,19 +6,17 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 21:47:34 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/18 20:37:09 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/24 23:33:26 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	array_size(int num)
+static size_t	array_size(int num)
 {
-	int	size;
-	int	i;
+	size_t	size;
 
 	size = 0;
-	i = 0;
 	if (num == 0)
 	{
 		size++;
@@ -27,7 +25,6 @@ static int	array_size(int num)
 	{
 		size++;
 		num = num / 10;
-		i++;
 	}
 	return (size);
 }
@@ -56,25 +53,25 @@ char	*ft_itoa(int n)
 {
 	char	*string;
 	int		signal;
-	int		len;
+	size_t	len;
 
 	len = array_size(n);
 	if (n < 0)
 		len++;
 	signal = signal_check(n);
-	string = (char *) malloc (len * sizeof(char *) + 1);
-	if (n < 0)
-		string[0] = '-';
+	string = (char *) malloc (len * sizeof(char *));
 	if (string == NULL)
 		return (NULL);
 	if (n == 0)
 		*string = '0';
 	string[len] = '\0';
+	if (n < 0)
+		string[0] = '-';
 	while (n != 0)
 	{
 		len--;
 		string[len] = module(n, signal);
 		n = n / 10;
 	}
-	return (string);
+	return (ft_strdup(string));
 }
