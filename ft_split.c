@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/24 17:31:36 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/24 22:57:17 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ static size_t	array_size(char const *str, char c)
 	words = 0;
 	trash = 0;
 	i = 0;
+	if (!*str)
+	{
+		return (words = 1);
+	}
 	while (str[i] != '\0')
 	{
 		if (str[i] == c && trash == 0)
