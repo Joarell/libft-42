@@ -6,11 +6,12 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 01:19:41 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/25 23:20:13 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/25 23:28:57 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static void	negative_putnbr(int n, int fd)
 {
 	char	num;
@@ -21,7 +22,7 @@ static void	negative_putnbr(int n, int fd)
 	}
 	if (!n)
 	{
-		negative_putnbr(1 , fd);
+		negative_putnbr(1, fd);
 		return (ft_putchar_fd('-', fd));
 	}
 	else if (n)
@@ -34,8 +35,8 @@ static void	negative_putnbr(int n, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	num;
-	static int before;
+	char		num;
+	static int	before;
 
 	if (!n)
 	{
