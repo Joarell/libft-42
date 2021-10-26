@@ -6,36 +6,55 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 01:19:41 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/25 07:48:05 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/25 23:20:13 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+static void	negative_putnbr(int n, int fd)
+{
+	char	num;
+
+	if (n == 1)
+	{
+		return ;
+	}
+	if (!n)
+	{
+		negative_putnbr(1 , fd);
+		return (ft_putchar_fd('-', fd));
+	}
+	else if (n)
+	{
+		num = (n % 10) * (-1) + '0';
+		negative_putnbr(n / 10, fd);
+		return (ft_putchar_fd(num, fd));
+	}
+}
 
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	num;
+	static int before;
 
-	num = 0;
-	if (n == 0)
+	if (!n)
 	{
+		if (before == 0)
+		{
+			ft_putchar_fd('0', fd);
+			return ;
+		}
 		return ;
 	}
-	if (n == '-')
+	else if (n < 0 && n >= INT_MIN)
 	{
-		num = '-';
+		return (negative_putnbr(n, fd));
 	}
-	if (n >= INT_MIN && n <= INT_MAX)
+	else if (n && n <= INT_MAX)
 	{
-		num = n % 10 + '0';
-		n /= 10;
-		ft_putchar_fd(num, fd);
-		return (ft_putnbr_fd(n, fd));
+		before = n;
+		num = (n % 10) + '0';
+		ft_putnbr_fd(n / 10, fd);
+		return (ft_putchar_fd(num, fd));
 	}
-}
-
-int main(void)
-{
-	ft_putnbr_fd(1234, 1);
-	return(0);
 }
