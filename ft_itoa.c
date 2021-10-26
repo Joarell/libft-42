@@ -6,35 +6,26 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 21:47:34 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/24 23:33:26 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/26 09:07:17 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	array_size(int num)
+static int	array_size(int num)
 {
-	size_t	size;
+	int	size;
 
 	size = 0;
-	if (num == 0)
-	{
+	if (num < 0)
 		size++;
-	}
-	while (num != 0 || ft_isalpha(num) == 1)
+	while (num != 0)
 	{
 		size++;
 		num = num / 10;
 	}
+	size++;
 	return (size);
-}
-
-static	char	module(int num, int signal)
-{
-	char	aux;
-
-	aux = ((num % 10) * signal) + '0';
-	return (aux);
 }
 
 static int	signal_check(int num)
@@ -55,23 +46,24 @@ char	*ft_itoa(int n)
 	int		signal;
 	size_t	len;
 
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	if (n == INT_MAX)
+		return (ft_strdup("2147483647"));
 	len = array_size(n);
-	if (n < 0)
-		len++;
 	signal = signal_check(n);
-	string = (char *) malloc (len * sizeof(char *));
+	string = (char *)malloc(len * sizeof(char));
 	if (string == NULL)
 		return (NULL);
-	if (n == 0)
-		*string = '0';
 	string[len] = '\0';
 	if (n < 0)
 		string[0] = '-';
-	while (n != 0)
+	while (len--)
 	{
-		len--;
-		string[len] = module(n, signal);
+		string[len] = (n % 10) * signal + '0';
 		n = n / 10;
 	}
-	return (ft_strdup(string));
+	return (string);
 }
