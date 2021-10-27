@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 21:47:34 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/26 23:02:28 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/27 01:44:13 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	array_size(int num)
 		size++;
 		num = num / 10;
 	}
-	size++;
 	return (size);
 }
 
@@ -41,7 +40,7 @@ char	*ft_itoa(int n)
 	if (n == INT_MIN)
 		return (ft_strdup("-2147483648"));
 	len = array_size(n);
-	string = (char *)malloc(len * sizeof(char));
+	string = (char *)malloc((len + 1) * sizeof(char));
 	if (string == NULL)
 		return (NULL);
 	string[len--] = '\0';
@@ -50,22 +49,10 @@ char	*ft_itoa(int n)
 		string[0] = '-';
 		n = -n;
 	}
-	while (len--)
+	while (n)
 	{
-		string[len] = ((n % 10) + '0');
+		string[len--] = ((n % 10) + '0');
 		n = n / 10;
 	}
 	return (string);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-	char	*str;
-
-	str = ft_itoa(42);
-	printf("$%s$", str);
-	free(str);
-	return (0);
 }
