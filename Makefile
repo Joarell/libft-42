@@ -5,7 +5,8 @@ ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdu
 ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 ft_putendl_fd.c ft_putnbr_fd.c
 
-SRCS_BONUS = ft_lstnew.c
+SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 HEADER = libft.h
 
@@ -15,7 +16,7 @@ NAME_BONUS = libft_bonus.a
 OBJ_DIR = objects
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
-OBJECTS_BONUS = $(SRC_BONUS:.c=.o)
+OBJECTS_BONUS = $(SRCS_BONUS:%.c=$(OBJ_DIR)/%.o)
 
 CC = clang 
 
