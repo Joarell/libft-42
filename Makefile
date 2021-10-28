@@ -4,30 +4,49 @@ ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_
 ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
 ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 ft_putendl_fd.c ft_putnbr_fd.c
-NAME = libft.a
 
-OBJS = $(SRCS:.c=.o)
+SRCS_BONUS = ft_lstnew.c
+
+HEADER = libft.h
+
+NAME = libft.a
+NAME_BONUS = libft_bonus.a
+
+OBJ_DIR = objects
+
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+OBJECTS_BONUS = $(SRC_BONUS:.c=.o)
 
 CC = clang 
 
-RM = rm -f
+RM = rm -fr
 
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror
 
+$(OBJ_DIR)/%.o:	%.c $(HEADER)
+					$(CC) -c $(FLAGS) $< -o $@
 
 all:	$(NAME)
 
-$(NAME): $(OBJS)
-		ar -crs $(NAME) $(OBJS) 
+bonus:	$(NAME_BONUS)
 
-$(OBJS): $(SRCS)
-		 $(CC) $(FLAGS) -c $(SRCS) 
+$(NAME):	$(OBJ_DIR) $(OBJS) $(HEADER)
+			ar -crs $(NAME) $(OBJS)
+			$(RM) $(SRCS:.c=.o)
+
+$(NAME_BONUS):	$(NAME) $(OBJ_DIR) $(HEADER) $(OBJECTS_BONUS)
+				ar -crs $(NAME) $(OBJECTS_BONUS)
+				cp $(NAME) $(NAME_BONUS)
+
+$(OBJ_DIR):	
+				mkdir $(OBJ_DIR)
+
 clean:
-		$(RM) $(OBJS)
+				$(RM) $(OBJ_DIR)
 
-fclean:	clean
-		$(RM) $(NAME)
+fclean:			clean
+				$(RM) $(NAME) $(NAME_BONUS)
 
-re:		fclean all
+re:				fclean all
 
-.PHONY:  all clean fclean re
+.PHONY:  all clean fclean re bonus
