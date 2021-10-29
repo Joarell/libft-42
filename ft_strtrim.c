@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 23:15:50 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/24 22:46:26 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/28 21:10:00 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 			len_set++;
 	}
 	s1 += trim;
+	if (!s1)
+		return (ft_strdup(""));
 	return (end_trim(s1, set));
 }
