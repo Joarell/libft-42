@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/27 22:43:03 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/29 09:55:44 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,24 @@ static	char	*next(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**storage;
-	size_t	i;
+	char		**storage;
+	size_t		i;
+	char const	*hold;
 
 	i = 0;
+	hold = (char *) s;
 	s = ft_strtrim(s, &c);
 	storage = (char **)malloc (array_size(s, c) * sizeof(char *));
 	if (storage == NULL)
 		return (NULL);
-	while (!(ft_strlen(s) == 0))
+	while (*s != '\0')
 	{
 		s = ft_strtrim(s, &c);
 		storage[i] = next(s, c);
 		s += ft_strlen(storage[i]);
 		i++;
 	}
+	s = hold;
 	storage[i] = NULL;
 	return (storage);
 }
