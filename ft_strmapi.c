@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:12:58 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/13 16:21:17 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/30 14:16:27 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s)
 		return (NULL);
 	len = ft_strlen(s);
-	new = malloc((len + 1) * sizeof(char));
+	new = (char *) malloc((len + 1) * sizeof(char));
 	if (new == NULL)
 	{
 		return (NULL);
