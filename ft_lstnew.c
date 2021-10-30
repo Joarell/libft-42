@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 22:55:04 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/28 05:26:04 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/29 19:46:22 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list	*ft_lstnew(void *content)
 	{
 		return (NULL);
 	}
-	new_e -> content = content;
-	new_e -> next = NULL;
+	new_e->content = content;
+	new_e->next = NULL;
 	return (new_e);
 }
