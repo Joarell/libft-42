@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 01:19:41 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/28 18:52:39 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/29 19:04:38 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	ft_putnbr_fd(int n, int fd)
 		}
 		return ;
 	}
-	else if (n < 0 && n >= -2147483648)
+	else if (n < 0 && n >= INT_MIN)
 	{
 		return (negative_putnbr(n, fd));
 	}
-	else if (n && n <= 2147483647)
+	else if (n && n <= INT_MAX)
 	{
 		before = n;
 		num = (n % 10) + '0';
