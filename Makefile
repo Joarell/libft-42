@@ -23,17 +23,15 @@ RM = rm -f
 FLAGS = -Wall -Wextra -Werror
 
 $(COMPILAION)/%.o:	%.c 
-					$(CC) -c $(FLAGS) $< -o $@
+					$(CC) -c $(FLAGS) $^ -o $@
 
 all:	$(NAME)
 
 bonus:	$(COMPILAION) $(OBJS) $(OBJECTS_BONUS)
 		ar -crs $(NAME) $(OBJS) $(OBJECTS_BONUS)
-		$(RM) $(OBJS) $(OBJECTS_BONUS)
 
 $(NAME):	$(COMPILAION) $(OBJS)
 			ar -crs $(NAME) $(OBJS)
-			$(RM) $(OBJS) $(OBJECTS_BONUS)
 
 clean:
 				$(RM) $(OBJS) $(OBJECTS_BONUS)
