@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 23:07:10 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/28 18:48:43 by Jev              ###   ########.fr       */
+/*   Updated: 2021/10/29 19:04:14 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+
+# ifndef INT_MIN_MAX
+#  define INT_MIN -2147483648
+#  define INT_MAX 2147483647
+# endif
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
