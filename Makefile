@@ -8,45 +8,38 @@ ft_putendl_fd.c ft_putnbr_fd.c
 SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 ft_lstclear.c ft_lstiter.c
 
-HEADER = libft.h
-
 NAME = libft.a
-NAME_BONUS = libft_bonus.a
+NAME_BONUS = libft.a
 
-OBJ_DIR = objects
+COMPILAION = .
 
-OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
-OBJECTS_BONUS = $(SRCS_BONUS:%.c=$(OBJ_DIR)/%.o)
+OBJS = $(SRCS:%.c=%.o)
+OBJECTS_BONUS = $(SRCS_BONUS:%.c=%.o)
 
 CC = clang 
 
-RM = rm -fr
+RM = rm -f
 
 FLAGS = -Wall -Wextra -Werror
 
-$(OBJ_DIR)/%.o:	%.c $(HEADER)
+$(COMPILAION)/%.o:	%.c 
 					$(CC) -c $(FLAGS) $< -o $@
 
 all:	$(NAME)
 
-bonus:	$(NAME_BONUS)
+bonus:	$(COMPILAION) $(OBJS) $(OBJECTS_BONUS)
+		ar -crs $(NAME) $(OBJS) $(OBJECTS_BONUS)
+		$(RM) $(OBJS) $(OBJECTS_BONUS)
 
-$(NAME):	$(OBJ_DIR) $(OBJS) $(HEADER)
+$(NAME):	$(COMPILAION) $(OBJS)
 			ar -crs $(NAME) $(OBJS)
-			$(RM) $(SRCS:.c=.o)
-
-$(NAME_BONUS):	$(NAME) $(OBJ_DIR) $(HEADER) $(OBJECTS_BONUS)
-				ar -crs $(NAME) $(OBJECTS_BONUS)
-				cp $(NAME) $(NAME_BONUS)
-
-$(OBJ_DIR):	
-				mkdir $(OBJ_DIR)
+			$(RM) $(OBJS) $(OBJECTS_BONUS)
 
 clean:
-				$(RM) $(OBJ_DIR)
+				$(RM) $(OBJS) $(OBJECTS_BONUS)
 
 fclean:			clean
-				$(RM) $(NAME) $(NAME_BONUS)
+				$(RM) $(NAME) $(bonus)
 
 re:				fclean all
 
