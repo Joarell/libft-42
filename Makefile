@@ -5,8 +5,7 @@ ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdu
 ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 ft_putendl_fd.c ft_putnbr_fd.c
 
-SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-ft_lstclear.c ft_lstiter.c
+SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
 
 NAME = libft.a
 NAME_BONUS = libft.a
@@ -33,12 +32,12 @@ bonus:	$(COMPILAION) $(OBJS) $(OBJECTS_BONUS)
 $(NAME):	$(COMPILAION) $(OBJS)
 			ar -crs $(NAME) $(OBJS)
 
-clean:
-				$(RM) $(OBJS) $(OBJECTS_BONUS)
+clean:		
+			$(RM) $(OBJS) $(OBJECTS_BONUS)
 
-fclean:			clean
-				$(RM) $(NAME) $(bonus)
+fclean:		clean
+			$(RM) $(NAME) $(bonus)
 
-re:				fclean all
+re:			fclean all
 
 .PHONY:  all clean fclean re bonus
