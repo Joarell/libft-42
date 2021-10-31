@@ -6,7 +6,7 @@
 #    By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 17:46:20 by Jev               #+#    #+#              #
-#    Updated: 2021/10/30 17:46:27 by Jev              ###   ########.fr        #
+#    Updated: 2021/10/31 17:03:30 by Jev              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ ft_putendl_fd.c ft_putnbr_fd.c
 SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
 
 NAME = libft.a
-NAME_BONUS = libft.a
 
 COMPILAION = .
 
