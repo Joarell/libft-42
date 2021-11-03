@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main                                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 01:44:55 by Jev               #+#    #+#             */
-/*   Updated: 2021/11/02 11:18:34 by Jev              ###   ########.fr       */
+/*   Updated: 2021/11/02 20:48:32 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,39 @@ int main(void)
 	return (0);
 }
 
+
+void  delete_node(void *content)
+{
+	free(content);
+}
+
+#include <stdio.h>
+
+int main (void)
+{
+	t_list	*balaio;
+	t_list	*aux;
+	char	first[] = {"Bolo"};
+	char	second[] = {"Chololate"};
+	char	third[] = {"Baunilha"};
+	char	fourth[] = {"chantilly"};
+	int		i;
+
+	balaio = NULL;
+	ft_lstadd_front(&balaio, ft_lstnew(&first));
+	ft_lstadd_front(&balaio, ft_lstnew(&second));
+	ft_lstadd_front(&balaio, ft_lstnew(&third));
+	ft_lstadd_back(&balaio, ft_lstnew(&fourth));
+	aux = ft_lstlast(balaio);
+
+	i = ft_lstsize(balaio);
+	while (i--)
+	{
+		printf("%s\n", (char *)balaio->content);
+		balaio = balaio->next;
+	}
+	return (0);
+}
 
 int main(void)
 {
