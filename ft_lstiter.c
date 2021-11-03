@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/28 06:51:21 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/28 06:56:35 by Jev              ###   ########.fr       */
+/*   Created: 2021/11/02 22:35:34 by Jev               #+#    #+#             */
+/*   Updated: 2021/11/03 00:38:31 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void  ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!lst || !f)
 	{
@@ -20,7 +20,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	}
 	while (lst)
 	{
-		f(lst -> content);
-		lst = lst -> next;
+		(f)(lst->content);
+		lst = lst->next;
 	}
 }
