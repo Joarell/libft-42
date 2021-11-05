@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/10/29 09:55:44 by Jev              ###   ########.fr       */
+/*   Updated: 2021/11/05 03:19:00 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,85 @@ static size_t	array_size(char const *str, char c)
 			trash = 0;
 		i++;
 	}
-	words++;
-	return (words + 1);
+	return (words);
 }
 
-static	char	*next(char const *s, char c)
+static  int move_n(char const *str, char t, size_t pos)
+{
+    int after;
+
+    after = pos;
+    if (after > 0)
+    {
+        after++;
+    }
+    while (str[after] != '\0')
+    {
+        if (str[after] != t && str[after - 1] == t)
+        {
+            return (after - pos);
+        }
+        after++;
+    }
+    return (0);
+}
+
+static	char	*next(char const *s, char c, size_t loc)
 {
 	int		range;
-	char	*next;
+    char    *new;
+    int     j;
 
-	range = 0;
-	while (s[range] != c && s[range] != '\0')
+    j = loc;
+    range = 0;
+	while (s[j] != c && s[j] != '\0')
 	{
 		range++;
+        j++;
 	}
-	next = ft_substr(s, 0, range);
-	return (next);
+    new = ft_substr(s, loc, range);
+	return (new);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char		**storage;
 	size_t		i;
-	char const	*hold;
+	int     	hold;
+    size_t      len;
 
 	i = 0;
-	hold = (char *) s;
-	s = ft_strtrim(s, &c);
-	storage = (char **)malloc (array_size(s, c) * sizeof(char *));
+    hold = 0;
+    len = array_size(s, c);
+	storage = (char **)malloc((len + 1) * sizeof(char *));
 	if (storage == NULL)
 		return (NULL);
-	while (*s != '\0')
+	while (len--)
 	{
-		s = ft_strtrim(s, &c);
-		storage[i] = next(s, c);
-		s += ft_strlen(storage[i]);
+        hold += move_n(s, c, hold);
+		storage[i] = next(s, c, hold);
 		i++;
 	}
-	s = hold;
 	storage[i] = NULL;
 	return (storage);
+}
+
+#include <stdio.h>
+
+int main (void)
+{
+	char	test[] = "--bom---dia";
+	char	**result;
+    int     i;
+
+	result = ft_split(test, '-');
+    i = 0;
+    while (result[i] != NULL)
+    {
+        printf("|%s|\n", result[i]);
+        i++;
+    }
+    printf("%s \n", result[i]);
+	free(result);
+	return (0);
 }
