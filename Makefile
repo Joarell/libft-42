@@ -6,7 +6,7 @@
 #    By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 17:46:20 by Jev               #+#    #+#              #
-#    Updated: 2021/11/03 03:40:56 by coder            ###   ########.fr        #
+#    Updated: 2021/11/03 23:53:29 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ COMPILAION = .
 OBJS = $(SRCS:%.c=%.o)
 OBJECTS_BONUS = $(SRCS_BONUS:%.c=%.o)
 
-CC = clang 
+CC = gcc
 
 RM = rm -f
 
