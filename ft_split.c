@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/11/05 23:21:33 by Jev              ###   ########.fr       */
+/*   Updated: 2021/11/06 15:58:50 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static size_t	array_size(char const *str, char c)
 	words = 0;
 	trash = 0;
 	i = 0;
-	if (!*str)
-	{
-		return (words = 1);
-	}
-	while (str[i] != '\0')
+	if (!*str || NULL)
+		return (words + 1);
+	if (ft_strchr(str, c) == NULL)
+		return (words + 2);
+	while (str[i])
 	{
 		if (str[i] == c && trash == 0)
 		{
@@ -42,10 +42,14 @@ static size_t	array_size(char const *str, char c)
 
 static	char	*move_n(char const *str, char t)
 {
-	while (*str == t)
+	int	i;
+
+	i = 0;
+	while (str[i] == t)
 	{
-		str++;
+		i++;
 	}
+	str += i;
 	return ((char *) str);
 }
 
@@ -56,11 +60,14 @@ static	char	*next(char const *s, char c)
 
 	range = 0;
 	new = NULL;
+	if (!c)
+		return (new);
 	while (s[range] != c && s[range] != '\0')
 	{
 		range++;
 	}
-	new = ft_substr(s, 0, range);
+	if (range > 0)
+		new = ft_substr(s, 0, range);
 	return (new);
 }
 
@@ -68,20 +75,21 @@ char	**ft_split(char const *s, char c)
 {
 	char		**storage;
 	size_t		i;
-	char		*hold;
 	size_t		len;
 
 	i = 0;
-	hold = (char *) s;
+	s = move_n(s, c);
 	len = array_size(s, c);
 	storage = (char **)malloc(len * sizeof(char *));
 	if (storage == NULL)
 		return (NULL);
 	while (--len)
 	{
-		hold = move_n(hold, c);
-		storage[i] = next(hold, c);
-		hold++;
+		s = move_n(s, c);
+		storage[i] = next(s, c);
+		if (storage[i] == NULL)
+			return (storage);
+		s += ft_strlen(storage[i]);
 		i++;
 	}
 	storage[i] = NULL;
