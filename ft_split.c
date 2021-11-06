@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/11/06 15:58:50 by Jev              ###   ########.fr       */
+/*   Updated: 2021/11/06 17:09:44 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static size_t	array_size(char const *str, char c)
 	words = 0;
 	trash = 0;
 	i = 0;
-	if (!*str || NULL)
+	if (!*str)
 		return (words + 1);
-	if (ft_strchr(str, c) == NULL)
+	if (ft_strchr(str, c) == NULL || !c)
 		return (words + 2);
 	while (str[i])
 	{
@@ -45,6 +45,8 @@ static	char	*move_n(char const *str, char t)
 	int	i;
 
 	i = 0;
+	if (!*str)
+		return (NULL);
 	while (str[i] == t)
 	{
 		i++;
@@ -60,8 +62,6 @@ static	char	*next(char const *s, char c)
 
 	range = 0;
 	new = NULL;
-	if (!c)
-		return (new);
 	while (s[range] != c && s[range] != '\0')
 	{
 		range++;
