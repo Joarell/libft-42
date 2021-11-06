@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/11/05 21:42:03 by Jev              ###   ########.fr       */
+/*   Updated: 2021/11/05 23:21:33 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,44 +36,31 @@ static size_t	array_size(char const *str, char c)
 			trash = 0;
 		i++;
 	}
-	return (words + 1);
+	words++;
+	return (words);
 }
 
-static	int	move_n(char const *str, char t, size_t pos)
+static	char	*move_n(char const *str, char t)
 {
-	int	after;
-
-	after = pos;
-	if (str[after] != t)
+	while (*str == t)
 	{
-		after++;
+		str++;
 	}
-	while (str[after] != '\0')
-	{
-		if (str[after] != t && str[after - 1] == t)
-		{
-			return (after - pos);
-		}
-		after++;
-	}
-	return (0);
+	return ((char *) str);
 }
 
-static	char	*next(char const *s, char c, size_t loc)
+static	char	*next(char const *s, char c)
 {
 	int		range;
 	char	*new;
-	int		j;
 
-	j = loc;
 	range = 0;
 	new = NULL;
-	while (s[j] != c && s[j] != '\0')
+	while (s[range] != c && s[range] != '\0')
 	{
 		range++;
-		j++;
 	}
-	new = ft_substr(s, loc, range);
+	new = ft_substr(s, 0, range);
 	return (new);
 }
 
@@ -81,19 +68,20 @@ char	**ft_split(char const *s, char c)
 {
 	char		**storage;
 	size_t		i;
-	int			hold;
+	char		*hold;
 	size_t		len;
 
 	i = 0;
-	hold = 0;
+	hold = (char *) s;
 	len = array_size(s, c);
-	storage = (char **)malloc((len + 1) * sizeof(char *));
+	storage = (char **)malloc(len * sizeof(char *));
 	if (storage == NULL)
 		return (NULL);
-	while (len--)
+	while (--len)
 	{
-		hold += move_n(s, c, hold);
-		storage[i] = next(s, c, hold);
+		hold = move_n(hold, c);
+		storage[i] = next(hold, c);
+		hold++;
 		i++;
 	}
 	storage[i] = NULL;
