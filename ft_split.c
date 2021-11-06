@@ -6,7 +6,7 @@
 /*   By: Jev <jsouza-c@student.42sp.org.br>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 19:38:16 by Jev               #+#    #+#             */
-/*   Updated: 2021/11/06 17:42:19 by Jev              ###   ########.fr       */
+/*   Updated: 2021/11/06 19:00:20 by Jev              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ static size_t	array_size(char const *str, char c)
 			trash = 0;
 		i++;
 	}
-	words++;
-	return (words);
+	if (str[i - 1] != c)
+		words++;
+	return (words + 1);
 }
 
 static	char	*move_n(char const *str, char t)
